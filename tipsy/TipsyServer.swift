@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 class TipsyServer: NSObject {
-    static let  baseUrl = "http://localhost:3000/api/v1"
+    static let  baseUrl = "http://www.gettipsy.io/api/v1"
     
     
     class var sessionId:String{
@@ -48,8 +48,8 @@ class TipsyServer: NSObject {
             "tipPercent":tipPercent
         ] as [String : Any]
         if(isUserLocationSet()){
-            dataHash["userLocationLat"] = userLocation.latitude
-            dataHash["userLocationLong"] = userLocation.longitude
+            dataHash["lat"] = userLocation.latitude
+            dataHash["long"] = userLocation.longitude
         }
         return try! JSONSerialization.data(withJSONObject: dataHash, options: .prettyPrinted)
     }
