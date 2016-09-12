@@ -78,7 +78,7 @@ class TipsyServer: NSObject {
             request.httpMethod = "POST";
             let task = URLSession.shared.dataTask(with:request as URLRequest){
                 data, response, error in
-                
+                if(data != nil){
                 do {
                     
                     if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
@@ -87,6 +87,7 @@ class TipsyServer: NSObject {
                     }
                 } catch let error as NSError {
                     print(error.localizedDescription)
+                }
                 }
             }
             task.resume()
