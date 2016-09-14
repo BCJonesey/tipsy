@@ -10,6 +10,7 @@ import UIKit
 
 class TipsySettings: NSObject {
     
+    // Set up some sane defaults
     class func initUserSettings(){
         let defaultSettings = [
             "tipValues" : [15,18,20],
@@ -19,7 +20,7 @@ class TipsySettings: NSObject {
         
     }
     
-    
+    // available tip values
     class var tipValues:[Double]{
         get{
             return UserDefaults.standard.array(forKey: "tipValues") as! [Double]

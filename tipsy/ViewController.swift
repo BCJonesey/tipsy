@@ -25,11 +25,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         TipsyUtils.createTipSegmentedControl(control: tipSegmentedControl)
         
+        // We want the bill field to be selected when the user boots up the app
         billField.becomeFirstResponder()
         
+        // Listen for when the session is available to use
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.sessionCreated), name: TipsyServer.SESSION_CREATED_NOTIFICATION, object: nil)
         
-        
+        // Ask for a session for this app start
         TipsyServer.initSession()
     }
     
@@ -43,6 +45,7 @@ class ViewController: UIViewController {
         reDrawFields()
     }
     
+    // Update computed fields
     func reDrawFields(){
         let bill = getBill()
         let tipPercent = TipsySettings.tipValues[tipSegmentedControl.selectedSegmentIndex]

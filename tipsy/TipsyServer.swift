@@ -83,17 +83,19 @@ class TipsyServer: NSObject {
         }
     }
     
+    // Set up a session for this app start
     class func initSession(){
+        // Check to see if we can use a stored session
         if(isSessionStillFresh()) {
+            // Pull infor from stored session
             let averageTip = TipsySettings.sessionData["averageTip"] as? Double
             let oldBill = TipsySettings.sessionData["billAmout"] as? Double
             let tipPercentage = TipsySettings.sessionData["tipPercentage"] as? Double
             
+            // Let people know that we are ready to go
             NotificationCenter.default.post(name: SESSION_CREATED_NOTIFICATION, object: self, userInfo: ["averageTip":averageTip, "oldBill": oldBill, "tipPercentage": tipPercentage])
-        }
+        }// If there is no vaild stored session, we need to get one from the server
         else if let url = URL(string: "\(baseUrl)/sessions"){
-            print("Benjones")
-            print(userLocation)
             let request = NSMutableURLRequest(url:url)
             request.httpMethod = "POST";
             let task = URLSession.shared.dataTask(with:request as URLRequest){
@@ -102,9 +104,11 @@ class TipsyServer: NSObject {
                     do {
                         
                         if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                            // Get the deets from the server response
                             let sessionId = convertedJsonIntoDict["sessionId"] as? String ?? ""
                             let averageTip = convertedJsonIntoDict["averageTip"] as? Double ?? 0
                             updateSession(sessionId: sessionId, billAmout: nil, tipPercentage: nil, averageTip: averageTip)
+                            // we are ready to go!
                             NotificationCenter.default.post(name: SESSION_CREATED_NOTIFICATION, object: self, userInfo: ["averageTip":averageTip])
                         }
                     } catch let error as NSError {
@@ -127,6 +131,7 @@ class TipsyServer: NSObject {
         }
     }
     
+    // Call if we make any changes so that we can acess it later if we need to
     class func updateSession(sessionId: String?, billAmout: Double?, tipPercentage: Double?, averageTip: Double?){
         var newSession = TipsySettings.sessionData
         
