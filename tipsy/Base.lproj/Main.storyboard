@@ -70,6 +70,11 @@
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="aP7-wd-IIo"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgh-i5-GOe">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -77,13 +82,15 @@
                             <constraint firstAttribute="leadingMargin" secondItem="8Ec-PX-7IC" secondAttribute="leading" id="4fk-3Q-nMJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8y1-87-Vu3" secondAttribute="trailing" id="9ih-V5-YGn"/>
                             <constraint firstItem="dvD-Mj-ehx" firstAttribute="leading" secondItem="LJO-ty-oHx" secondAttribute="trailing" constant="50" id="CjU-je-MFh"/>
-                            <constraint firstItem="nz3-bS-mCb" firstAttribute="top" secondItem="8y1-87-Vu3" secondAttribute="bottom" constant="119" id="DsM-MS-wty"/>
                             <constraint firstAttribute="leadingMargin" secondItem="8y1-87-Vu3" secondAttribute="leading" id="HCN-sX-0hf"/>
                             <constraint firstItem="8y1-87-Vu3" firstAttribute="top" secondItem="1TP-cD-Ovy" secondAttribute="bottom" constant="20" id="HlL-Fb-sQS"/>
                             <constraint firstItem="dvD-Mj-ehx" firstAttribute="top" secondItem="bCY-F7-37e" secondAttribute="bottom" constant="7" id="Iei-iE-fFW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nz3-bS-mCb" secondAttribute="trailing" id="KuP-lN-wta"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dgh-i5-GOe" secondAttribute="trailing" id="L8E-pE-uqh"/>
                             <constraint firstItem="8Ec-PX-7IC" firstAttribute="top" secondItem="8y1-87-Vu3" secondAttribute="bottom" constant="24" id="N9f-L3-BIv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="1TP-cD-Ovy" secondAttribute="leading" id="PRu-R5-s7b"/>
+                            <constraint firstItem="Dgh-i5-GOe" firstAttribute="top" secondItem="8Ec-PX-7IC" secondAttribute="bottom" constant="29.5" id="Qi0-uS-uFX"/>
+                            <constraint firstItem="nz3-bS-mCb" firstAttribute="top" secondItem="Dgh-i5-GOe" secondAttribute="bottom" constant="24" id="RaP-Dh-VEu"/>
                             <constraint firstItem="8Ec-PX-7IC" firstAttribute="width" secondItem="1TP-cD-Ovy" secondAttribute="width" id="RbI-8p-j1W"/>
                             <constraint firstAttribute="leadingMargin" secondItem="nz3-bS-mCb" secondAttribute="leading" id="SmR-yo-CLi"/>
                             <constraint firstItem="1TP-cD-Ovy" firstAttribute="top" secondItem="LJO-ty-oHx" secondAttribute="bottom" constant="34" id="dXt-lZ-WmF"/>
@@ -92,13 +99,11 @@
                             <constraint firstItem="8Ec-PX-7IC" firstAttribute="centerY" secondItem="f5l-jh-nXO" secondAttribute="centerY" id="iPe-63-69Q"/>
                             <constraint firstItem="LJO-ty-oHx" firstAttribute="top" secondItem="bCY-F7-37e" secondAttribute="bottom" constant="12" id="iR1-P4-NnM"/>
                             <constraint firstItem="EYQ-SR-rqp" firstAttribute="top" secondItem="dvD-Mj-ehx" secondAttribute="bottom" constant="30" id="lNk-O0-ldl"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Dgh-i5-GOe" secondAttribute="leading" id="m93-l8-Evb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="f5l-jh-nXO" secondAttribute="trailing" id="mfX-pH-wOI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dvD-Mj-ehx" secondAttribute="trailing" id="pro-mD-v53"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EYQ-SR-rqp" secondAttribute="trailing" id="xl3-k4-gkn"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Elr-lU-2m1" appends="YES" id="rN5-2W-Y8K"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tipsy" id="xNi-Wv-oXf">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="ZCM-yI-Z2K">
@@ -108,6 +113,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="averageTipLabel" destination="Dgh-i5-GOe" id="AGn-sL-C2h"/>
                         <outlet property="billField" destination="dvD-Mj-ehx" id="5yC-lM-JZn"/>
                         <outlet property="tipLabel" destination="EYQ-SR-rqp" id="ELC-7C-bb5"/>
                         <outlet property="tipSegmentedControl" destination="nz3-bS-mCb" id="F9I-b2-5kH"/>
@@ -120,11 +126,6 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <tapGestureRecognizer id="Elr-lU-2m1">
-                    <connections>
-                        <action selector="onTap:" destination="BYZ-38-t0r" id="0xd-y6-e9Q"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="672.5" y="152.5"/>
         </scene>
@@ -164,7 +165,7 @@
                                     <action selector="tipsChanged:" destination="Y8J-kS-Z18" eventType="editingChanged" id="5kc-9P-Guy"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoG-Bq-gfi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip Percentage Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoG-Bq-gfi">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

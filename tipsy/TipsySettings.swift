@@ -39,4 +39,16 @@ class TipsySettings: NSObject {
             UserDefaults.standard.synchronize();
         }
     }
+    
+    class var sessionData:[String:Any]{
+        get{
+            return UserDefaults.standard.dictionary(forKey: "sessionData") ?? [:]
+        }
+        set{
+            UserDefaults.standard.setValue(newValue, forKey: "sessionData");
+            UserDefaults.standard.synchronize();
+        }
+    }
+    
+    
 }

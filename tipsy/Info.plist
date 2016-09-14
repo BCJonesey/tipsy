@@ -8,8 +8,8 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Cuz I want it!!!</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We use location to give you the average tip in your area.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

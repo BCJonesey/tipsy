@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func initApp(){
         TipsySettings.initUserSettings()
-        TipsyServer.initSession()
+        
         
         
         
