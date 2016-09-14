@@ -80,7 +80,6 @@ class ViewController: UIViewController {
     
     
     func sessionCreated(notification:Notification){
-        print(notification.userInfo)
         if let info = notification.userInfo as? Dictionary<String,Any> {
             // Check if value present before using it
             if(info["averageTip"] != nil) {

@@ -68,7 +68,7 @@ class TipsyServer: NSObject {
         if(sessionId != ""){
             
             updateSession(sessionId: nil, billAmout: billAmount, tipPercentage: tipPercent, averageTip: nil)
-            print(sessionId)
+            
             if let url = URL(string: "\(baseUrl)/sessions/\(sessionId)/actions"){
                 
                 let request = NSMutableURLRequest(url:url)
@@ -149,8 +149,6 @@ class TipsyServer: NSObject {
         }
         newSession["updateTime"] = NSDate()
         
-        print("update session")
-        print(newSession)
         
         TipsySettings.sessionData = newSession
     }
