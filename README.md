@@ -37,7 +37,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Swift 3 kept changing out from under me!
+* Swift 3 kept changing out from under me!
+* Server code can be found here: [https://github.com/BCJonesey/tipsy_server](https://github.com/BCJonesey/tipsy_server)
 
 ## License
 
